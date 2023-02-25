@@ -10,15 +10,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', '') != 'False')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15']
-CSRF_TRUSTED_ORIGINS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15', 'www.mylab-almaty.kz']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost', 'https://mylab-almaty.kz', 'https://www.mylab-almaty.kz', 'https://78.40.108.15']
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
 # Каким адрессам разрешено обрабатывать ответ от сервера
-CORS_ORIGIN_WHITELIST = ('127.0.0.1:8000', 'mylab-almaty.kz', '78.40.108.15')
+CORS_ORIGIN_WHITELIST = ('127.0.0.1:8000', 'mylab-almaty.kz', '78.40.108.15', 'www.mylab-almaty.kz')
 
 # Application definition
 INSTALLED_APPS = [
