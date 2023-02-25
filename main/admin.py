@@ -98,6 +98,7 @@ class PartnersAdmin(admin.ModelAdmin):
    list_editable = ('image',)
    fields = ("name", 'get_html_photo', 'image')
    search_fields = ("name",)
+   readonly_fields = ('get_html_photo',)
 
    def get_html_photo(self, object):
       if object.image:
