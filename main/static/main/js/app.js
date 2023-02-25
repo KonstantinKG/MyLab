@@ -4546,7 +4546,6 @@
         if (map) mapObserver.observe(map);
         let storage = [];
         const searchUrl = `${window.location.protocol}//${window.location.hostname}/search/`;
-        console.log(searchUrl);
         const searchInput = document.querySelector(".search-header__input");
         const searchOptions = document.querySelector(".search-header__list");
         const searchForm = document.querySelector(".search-header");
