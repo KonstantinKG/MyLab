@@ -1,14 +1,8 @@
 import json
-from datetime import date, timezone
-from .forms import *
-from .mixins import *
 from .models import *
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import PermissionDenied
-from django.db.models import Count, F, Q
-from django.http import JsonResponse, HttpResponseRedirect
-from django.views.generic import ListView, DetailView, CreateView, View, UpdateView, TemplateView
+from django.db.models import F, Q
+from django.http import JsonResponse
+from django.views.generic import View, TemplateView
 
 class IndexView(TemplateView):
    template_name = 'index.html'

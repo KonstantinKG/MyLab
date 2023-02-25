@@ -5,12 +5,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^v_!mt@ncpr6_q4=c$rc=cik)2&n-u-4g!aru8&cbo_ldb^1c6'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', '') != 'False')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15']
 CSRF_TRUSTED_ORIGINS = []
 
 INTERNAL_IPS = [
@@ -18,7 +18,7 @@ INTERNAL_IPS = [
 ]
 
 # Каким адрессам разрешено обрабатывать ответ от сервера
-CORS_ORIGIN_WHITELIST = ('127.0.0.1:8000',)
+CORS_ORIGIN_WHITELIST = ('127.0.0.1:8000', 'mylab-almaty.kz', '78.40.108.15')
 
 # Application definition
 INSTALLED_APPS = [
@@ -75,8 +75,12 @@ DB_PASSWORD = os.environ.get('DB_NAME', '')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'devDB'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -116,15 +120,11 @@ STATICFILES_DIRS = []
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Sessions settings
 SESSION_COOKIE_AGE = 1 * 24 * 60 * 60
 
 CRONJOBS = [
-    # ('0 12 * * *', 'core.crons.cron.clearExpiredSales')
-    ('* * * * *', 'core.crons.cron.clearExpiredSales')
+    ('@daily', 'core.crons.cron.clearExpiredSales')
 ]
