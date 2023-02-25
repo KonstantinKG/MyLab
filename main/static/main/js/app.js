@@ -4545,65 +4545,7 @@
         const map = document.querySelector("#map .iframe-map");
         if (map) mapObserver.observe(map);
         let storage = [];
-        storage = [ {
-            title: "Общий анализ крови (лейкоформула + тромбоциты + СОЭ)",
-            slug: "obshij-analiz-krovi-lejkoformulatrombocitysoe"
-        }, {
-            title: "Диагностика Сифилиса: кровь на RW (Реакция Вассермана)",
-            slug: "sub4"
-        }, {
-            title: "Фибриноген по Клаусу",
-            slug: "fibrinogen-po-klausu"
-        }, {
-            title: "D-димер",
-            slug: "d-dimer"
-        }, {
-            title: "Мазок на степень чистоты + (Гн;трих) - без забора",
-            slug: "sub5"
-        }, {
-            title: "Гематологические и гемостазиологические исследования",
-            slug: "gematologicheskie-i-gemostaziologicheskie-issledovaniya"
-        }, {
-            title: "Коагулограмма стандарт 06-032: 2840 (КК 2080)",
-            slug: "koagulogramma-standart-06-032-2840-kk-2080"
-        }, {
-            title: "Коагулограмма расширенная 06-001: 9260 (КК 7060)",
-            slug: "koagulogramma-rasshirennaya-06-001-9260-kk-7060"
-        }, {
-            title: "Серологические исследования",
-            slug: "id4"
-        }, {
-            title: "Общеклинические исследования",
-            slug: "id5"
-        }, {
-            title: "Диагностика Сифилиса: кровь на RW (Реакция Вассермана)",
-            slug: "sub4"
-        }, {
-            title: "Фибриноген по Клаусу",
-            slug: "fibrinogen-po-klausu"
-        }, {
-            title: "D-димер",
-            slug: "d-dimer"
-        }, {
-            title: "Мазок на степень чистоты + (Гн;трих) - без забора",
-            slug: "sub5"
-        }, {
-            title: "Гематологические и гемостазиологические исследования",
-            slug: "gematologicheskie-i-gemostaziologicheskie-issledovaniya"
-        }, {
-            title: "Коагулограмма стандарт 06-032: 2840 (КК 2080)",
-            slug: "koagulogramma-standart-06-032-2840-kk-2080"
-        }, {
-            title: "Коагулограмма расширенная 06-001: 9260 (КК 7060)",
-            slug: "koagulogramma-rasshirennaya-06-001-9260-kk-7060"
-        }, {
-            title: "Серологические исследования",
-            slug: "id4"
-        }, {
-            title: "Общеклинические исследования",
-            slug: "id5"
-        } ];
-        const searchUrl = "http://127.0.0.1:8000/search/";
+        const searchUrl = `http://${window.location.hostname}/search/`;
         const searchInput = document.querySelector(".search-header__input");
         const searchOptions = document.querySelector(".search-header__list");
         const searchForm = document.querySelector(".search-header");
