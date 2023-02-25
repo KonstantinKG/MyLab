@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', '') != 'False')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15']
-CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS = ['127.0.0.1', 'localhost', 'mylab-almaty.kz', '78.40.108.15']
 
 INTERNAL_IPS = [
     "127.0.0.1",
