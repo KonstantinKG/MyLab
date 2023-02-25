@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" class="loading">
+
+<head>
+
+	<head>
+		<title>MyLaMyLab лаборатория Алматы</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
+		<link rel="shortcut icon" href="{% static 'main/favicon.ico' %}">
+
+		<meta name="format-detection" content="telephone=no">
+		<meta name="description" content="Все виды медицинских анализов, Выезд на дом, Акции, Доступные цены, Без выходных, Общие анализы крови, Сдача анализов Алматы, Биохимические анализы">
+		<meta name="keywords" content="Все виды медицинских анализов, Сдача анализов Алматы, Выезд на дом, Доступные цены, Без выходных">
+	</head>
+</head>
+
+<body>
+	<div class="preloader">
+		<div class="preloader__circle">
+			<div class="preloader__spinner"></div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__items">
+					<a href="#" class="header__logo"><img src="{% static 'main/img/logo.svg' %}" alt=""></a>
+					<a data-popup="#popup-search" href="#" class="header__item header__item_search _icon-search"></a>
+					<a href="#" data-goto-top="29" data-goto-header data-goto="#contacts" class="header__item _icon-phone"></a>
+					<a href="#" data-goto-top="29" data-goto-header data-goto="#location" class="header__item _icon-maps"></a>
+					<div class="header__search">
+						<form data-da=".popup__header, 991, first" action="#" class="search-header">
+							<button type="submit" class="search-header__button _icon-search"></button>
+							<input autocomplete="off" type="search" name="search" placeholder="Поиск по катологу" class="search-header__input">
+						</form>
+						<ul data-da=".popup__list, 991, first" class="search-header__list">
+						</ul>
+					</div>
+				</div>
+				<div class="header__menu menu">
+					<button type="button" class="menu__icon icon-menu"><span></span></button>
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#sales" class="menu__link">Акции</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#recomendation" class="menu__link">Рекомендации</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#catalog" class="menu__link">Каталог</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#contacts" class="menu__link">Контакты</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#location" class="menu__link">Адрес</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#partners" class="menu__link">Партнеры</a></li>
+							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#vacancies" class="menu__link">Вакансии</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+    {% block content %}
+
+    {% endblock %}
+    <footer class="footer">
+			<div class="footer__container">
+				<div class="footer__copyright">©Все права защищены 2023</div>
+			</div>
+		</footer>
+	</div>
+	<div aria-hidden="true" class="popup" id="popup-search">
+		<div class="popup__wrapper">
+			<div data-fullscreen class="popup__content">
+				<div class="popup__header">
+					<button data-close type="button" class="popup__close">Отмена</button>
+				</div>
+				<div class="popup__list"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static 'main/js/app.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<script>
+   let previewField;
+   let intId = setInterval(() => {
+      let salesForm = document.querySelector('#salemodel_form');
+
+      if (salesForm) {
+         let imageSelect = document.querySelector('select#id_image');
+         previewField = salesForm.querySelector('.field-get_html_photo');
+
+         imageSelect.addEventListener('change', (e) => {
+            let selectedOption = imageSelect.selectedOptions[0];
+            let imgTag = previewField.querySelector('img');
+            let imgUrl = selectedOption.innerText.split('|')[1].trim();
+
+            imgTag.setAttribute('src', imgUrl);
+         })
+
+         clearInterval(intId);
+      }
+   }, 500)
+
+</script>
+{% endblock %}

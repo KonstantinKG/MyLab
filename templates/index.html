@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="page">
+	<section data-fullscreen class="mainblock">
+		<div class="mainblock__content content-mainblock">
+			<div class="content-mainblock__info">
+				<div class="content-mainblock__logo"><img src="{% static 'main/img/logo.svg' %}" alt=""></div>
+				<h1 class="content-mainblock__title">Доступные анализы</h1>
+			</div>
+			<button data-goto-top="30" data-goto-header data-goto="#catalog" type="button" class="content-mainblock__btn">Каталог</button>
+		</div>
+		<div class="mainblock__info info-mainblock">
+			<div class="info-mainblock__bg">
+				<picture>
+					{% if page.background %}
+					<source srcset="{{ page.main_bg.url }}" type="image/webp"><img src="{{ page.main_bg.url }}" alt="">
+					{% else %}
+					<source srcset="{% static 'main/img/mainblock/bg.webp' %}" type="image/webp"><img src="{% static 'main/img/mainblock/bg.jpg' %}" alt="">
+					{% endif %}
+				</picture>
+			</div>
+			<div data-da=".content-mainblock__info, 992, last" class="info-mainblock__items">
+				<div class="info-mainblock__item">
+					<i class="info-mainblock__icon _icon-time"></i>
+					<h3 class="info-mainblock__title">{{ page.hours_text }}</h3>
+				</div>
+				<a title="Написать в WhatsApp" target="_blank" href="https://wa.me/{{ page.whatsapp }}" class="info-mainblock__item info-mainblock__item_dark">
+					<i class="info-mainblock__icon _icon-delivery"></i>
+					<h3 class="info-mainblock__title">{{ page.out_text }}</h3>
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="sales" id="sales">
+		<div class="sales__container">
+			<div class="sales-swiper swiper">
+				<div class="sales-swiper__wrapper swiper-wrapper" data-details>
+					{% for sale in sales %}
+					<div class="sales-swiper__slide swiper-slide">
+						<article class="sales-swiper__item item-sales">
+							<div class="item-sales__body" data-details-body>
+								<div class="item-sales__main">
+									<div class="item-sales__info">
+										<h3 class="item-sales__title _icon-sale">{{ sale.title }}</h3>
+										<div class="item-sales__description">
+											{{ sale.text }}
+										</div>
+										<button type="button" class="detailed-item-sales__btn" data-details-btn>Подробнее</button>
+									</div>
+									<div class="item-sales__background _icon-discount">
+										<picture>
+											{% if sale.image %}
+											<source srcset="{{ sale.image.image.url }}" type="image/webp"><img src="{{ sale.image.image.url }}" alt="">
+											{% else %}
+											<source srcset="{% static 'main/img/discount/01.webp' %}" type="image/webp"><img src="{% static 'main/img/discount/01.jpg' %}"
+											alt="фон">
+											{% endif %}
+										</picture>
+									</div>
+								</div>
+								<div class="item-sales__detailed detailed-item-sales" data-details-spoiler>
+									<div class="detailed-item-sales__body">
+										<div class="detailed-item-sales__text">
+											{{ sale.details }}
+										</div>
+										{% if sale.date_end %}
+										<div class="detailed-item-sales__date">Действует до: {{ sale.date_end|date:'d.m.Y' }}</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+					{% endfor %}
+				</div>
+				<div class="sales-swiper-pagination swiper-pagination"></div>
+			</div>
+		</div>
+	</section>
+	<section class="recomendation" id="recomendation">
+		<div class="recomendation__container">
+			<h2 class="recomendation__title title">Подготовка к анализам</h2>
+			<div class="recomendation__text">
+				<p>
+					{{ page.recommend_p1 }}
+				</p>
+				<p>
+					{{ page.recommend_p2 }}
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="catalog" id="catalog">
+		<div class="catalog__container">
+			<h2 class="catalog__title title">Каталог</h2>
+			<ul data-one-spoller data-spollers class="catalog__items">
+				{% for point in catalog %}
+				<li class="catalog__item item-catalog">
+					<h3 data-slug="{{point.slug}}" data-spoller class="item-catalog__title _icon-arrow"><span>{{point.title}}</span></h3>
+					<div class="item-catalog__body">
+						<ul class="item-catalog__items">
+							{% for subpoint in point.services.all %}
+							<li class="item-catalog__item" data-slug="{{ subpoint.slug}}">
+								<div class="item-catalog__name-research">{{ subpoint.title }}</div>
+								<div class="item-catalog__price">{{ subpoint.price }}тг</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+	<section class="information">
+		<div class="information__container">
+			<section class="contacts" id="contacts">
+				<h2 class="contacts__title title">Контакты</h2>
+				<div class="contacts__body">
+					<div class="contacts__bg">
+						<picture>
+							{% if page.background %}
+							<source srcset="{{ page.contact_bg.url }}" type="image/webp"><img src="{{ page.contact_bg.url }}" alt="">
+							{% else %}
+							<source srcset="{% static 'main/img/contacts/mylab.webp' %}" type="image/webp"><img src="{% static 'main/img/contacts/mylab.webp' %}"alt="фон">
+							{% endif %}
+						</picture>
+					</div>
+					<div class="contacts__items">
+						<div class="contacts__item">
+							<a target="_blank" href="{{ page.inst_url }}" class="contacts__link _icon-insta">{{ page.inst_name }}</a>
+						</div>
+						<div class="contacts__item">
+							<a href="mailto:{{ page.email }}" class="contacts__link _icon-email">{{ page.email }}</a>
+						</div>
+						<div class="contacts__item">
+							<a href="tel:{{ page.phone }}" class="contacts__link _icon-phone">{{ page.get_formatted_phone }}</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="location" id="location">
+				<h2 class="location__title title">Адрес</h2>
+				<div class="location__body">
+					<h3 class="location__address _icon-location">{{ page.address }}</h3>
+					<div class="location__place place-location">
+						<div class="place-location__title">Мы на картах:</div>
+						<div class="place-location__maps">
+							<a target="_blank" href="https://goo.gl/maps/PPk9s7CuUNGkCkNy8" class="place-location__map">
+								<picture>
+									<source srcset="{% static 'main/img/maps/google-map.webp' %}" type="image/webp">
+									<img src="{% static 'main/img/maps/google-map.png' %}" alt="">
+								</picture>
+							</a>
+							<a target="_blank" href="https://go.2gis.com/11jtzx" class="place-location__map">
+								<picture>
+									<source srcset="{% static 'main/img/maps/2gis.webp' %}" type="image/webp">
+									<img src="{% static 'main/img/maps/2gis.png' %}" alt="">
+								</picture>
+							</a>
+							<a target="_blank" href="https://yandex.kz/maps/-/CCUCFDbc3C" class="place-location__map">
+								<img src="{% static 'main/img/maps/yandex.svg' %}" alt=""></a>
+							</div>
+						<div class="location__map" id="map">
+							<iframe title="карта" class="iframe-map" data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Afb673035763d7e5f2b3e2c786a4c09e7d0a372cc5736127a74ac91a67336bae2&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="partners" id="partners">
+				<h2 class="partners__title title">Партнеры</h2>
+				<div class="partners-swiper swiper">
+					<div class="partners-swiper__wrapper swiper-wrapper">
+						{% for partner in partners %}
+						{% if partner.image %}
+						<div class="partners-swiper__slide swiper-slide">
+							<div class="partners-swiper__item">
+								<div class="partners-swiper__image">
+									<picture>
+										<source srcset="{{ partner.image.url }}" type="image/webp"><img src="{{ partner.image.url }}" alt="{{ partner.name }}">
+									</picture>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</div>
+					<div class="partners-swiper-pagination swiper-pagination"></div>
+					<button type="button" class="partners-swiper-button-prev swiper-button-prev"></button>
+					<button type="button" class="partners-swiper-button-next swiper-button-next"></button>
+				</div>
+			</section>
+		</div>
+	</section>
+	<section class="vacancies" id="vacancies">
+		<div class="vacancies__container">
+			<h2 class="vacancies__title title">Вакансии</h2>
+			<div class="vacancies-swiper swiper">
+				<div class="vacancies-swiper__wrapper swiper-wrapper" data-details>
+					{% for vacancy in vacancies %}
+					<div class="vacancies-swiper__slide swiper-slide">
+						<article class="vacancies-swiper__item item-vacancies">
+							<div class="item-vacancies__body" data-details-body>
+								<div class="item-vacancies__main">
+									<div class="item-vacancies__background _icon-doctor">
+										<div class="item-vacancies__price">{{ vacancy.wage }} <br>тг</div>
+									</div>
+									<div class="item-vacancies__info">
+										<h3 class="item-vacancies__title">{{ vacancy.title }}</h3>
+										<div class="item-vacancies__description">
+											{{ vacancy.text }}
+										</div>
+										<button type="button" class="detailed-item-vacancies__btn" data-details-btn>Подробнее</button>
+									</div>
+								</div>
+								<div class="item-vacancies__detailed detailed-item-vacancies" data-details-spoiler>
+									<div class="detailed-item-vacancies__body">
+										<div class="detailed-item-vacancies__description">
+											{{ vacancy.details }}
+										</div>
+										<div class="detailed-item-vacancies__contacts">Отдел кадров: <a href="tel:{{page.hire_phone}}" class="detailed-item-vacancies__link">{{page.get_formatted_hire_phone}}</a></div>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+					{% endfor %}
+				</div>
+				<div class="vacancies-swiper-pagination swiper-pagination"></div>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
