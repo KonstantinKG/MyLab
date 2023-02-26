@@ -6,10 +6,10 @@
 	<section data-fullscreen class="mainblock">
 		<div class="mainblock__content content-mainblock">
 			<div class="content-mainblock__info">
-				<div class="content-mainblock__logo"><img src="{% static 'main/img/logo.svg' %}" alt=""></div>
+				<div class="content-mainblock__logo"><img src="{% static 'main/img/logo.png' %}" alt=""></div>
 				<h1 class="content-mainblock__title">Доступные анализы</h1>
 			</div>
-			<button data-goto-top="30" data-goto-header data-goto="#catalog" type="button" class="content-mainblock__btn">Каталог</button>
+			<button data-goto-top="30" data-goto-header data-goto="#catalog" type="button" class="content-mainblock__btn">Анализы</button>
 		</div>
 		<div class="mainblock__info info-mainblock">
 			<div class="info-mainblock__bg">
@@ -33,6 +33,8 @@
 			</div>
 		</div>
 	</section>
+
+	{% if sales %}
 	<section class="sales" id="sales">
 		<div class="sales__container">
 			<div class="sales-swiper swiper">
@@ -79,6 +81,8 @@
 			</div>
 		</div>
 	</section>
+	{% endif %}
+	
 	<section class="recomendation" id="recomendation">
 		<div class="recomendation__container">
 			<h2 class="recomendation__title title">Подготовка к анализам</h2>
@@ -94,7 +98,7 @@
 	</section>
 	<section class="catalog" id="catalog">
 		<div class="catalog__container">
-			<h2 class="catalog__title title">Каталог</h2>
+			<h2 class="catalog__title title">Анализы</h2>
 			<ul data-one-spoller data-spollers class="catalog__items">
 				{% for point in catalog %}
 				<li class="catalog__item item-catalog">
@@ -194,6 +198,8 @@
 			</section>
 		</div>
 	</section>
+
+	{% if vacancies %}
 	<section class="vacancies" id="vacancies">
 		<div class="vacancies__container">
 			<h2 class="vacancies__title title">Вакансии</h2>
@@ -232,5 +238,6 @@
 			</div>
 		</div>
 	</section>
+	{% endif %}
 </main>
 {% endblock %}

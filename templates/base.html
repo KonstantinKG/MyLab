@@ -28,7 +28,7 @@
 		<header class="header">
 			<div class="header__container">
 				<div class="header__items">
-					<a href="#" class="header__logo"><img src="{% static 'main/img/logo.svg' %}" alt=""></a>
+					<a href="#" class="header__logo"><img src="{% static 'main/img/logo.png' %}" alt=""></a>
 					<a data-popup="#popup-search" href="#" class="header__item header__item_search _icon-search"></a>
 					<a href="#" data-goto-top="29" data-goto-header data-goto="#contacts" class="header__item _icon-phone"></a>
 					<a href="#" data-goto-top="29" data-goto-header data-goto="#location" class="header__item _icon-maps"></a>
@@ -45,13 +45,17 @@
 					<button type="button" class="menu__icon icon-menu"><span></span></button>
 					<nav class="menu__body">
 						<ul class="menu__list">
+							{% if sales %}
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#sales" class="menu__link">Акции</a></li>
+							{% endif %}
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#recomendation" class="menu__link">Рекомендации</a></li>
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#catalog" class="menu__link">Каталог</a></li>
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#contacts" class="menu__link">Контакты</a></li>
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#location" class="menu__link">Адрес</a></li>
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#partners" class="menu__link">Партнеры</a></li>
+							{% if vacancies %}
 							<li class="menu__item"><a href="#" data-goto-top="30" data-goto-header data-goto="#vacancies" class="menu__link">Вакансии</a></li>
+							{% endif %}
 						</ul>
 					</nav>
 				</div>
